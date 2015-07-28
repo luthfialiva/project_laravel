@@ -1,0 +1,5 @@
+    <td><img src="<?php echo e($feed->user->picture); ?>" class="img-circle" style="height:40px"/></td>
+      <td><?php echo e($feed->user->name); ?></td>
+      <td>Add <a href="<?php echo e(route('reminder.show', ['id' => $feed->subject_id])); ?>"><?php echo e($feed->subject_name); ?>"</a> Document</td>
+      <td>at <?php echo e($feed->created_at->format('D M Y')); ?></td>
+    <td><span class="label label-success"><?php echo e($feed->created_at->diffForHumans()); ?></span></td>

@@ -1,0 +1,56 @@
+<?php $__env->startSection('main'); ?>
+<legend>Daftar User</legend>
+    <a href="<?php echo e(route('admin.all')); ?>">All Users
+    <span class="badge" style="margin-bottom: 10px"><?php echo e($users->total()); ?></span></a>
+    <table class="table table-striped table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Role</th>
+          <th>Email</th>
+          <th>Created at</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      <?php for($i = 0; $i < count($users); $i++): ?>
+        <tr>
+          <th><?php echo e($i+1); ?></th>
+          <td><?php echo link_to_route('admin.show', $users[$i]->name, ['id' => $users[$i]->id], ['class' => 'text-capitalize']); ?></td>
+          <td><?php echo e($users[$i]->username); ?></td>
+          <td>
+          <?php /*<?php echo e($users[$i]->role); ?>*/ ?>
+            <?php if($users[$i]->role == 1): ?>
+                Administrator
+            <?php elseif($users[$i]->role == 2): ?>
+                Operator
+            <?php elseif($users[$i]->role == 4): ?>
+                Guru
+            <?php elseif($users[$i]->role == 5): ?>
+                Peserta Didik
+            <?php endif; ?>
+          </td>
+          <td><?php echo e($users[$i]->email); ?></td>
+          <td><?php echo e($users[$i]->created_at->diffForHumans()); ?></td>
+          <td>
+            <div class="btn-group">
+                <a class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" href="#">Actions <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="<?php echo e(route('admin.edit', ['id' => $users[$i]->id])); ?>"><i class="glyphicon glyphicon-pencil"></i> Edit</a></li>
+                    <li>
+                        <a href="<?php echo e(route('admin.destroy', ['id' => $users[$i]->id])); ?>"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+                    </li>
+                    <li><a href="<?php echo e(route('admin.show', ['id' => $users[$i]->id])); ?>"><i class="glyphicon glyphicon-search"></i> Details</a></li>
+                </ul>
+            </div>
+          </td>
+        </tr>
+        <?php endfor; ?>
+      </tbody>
+    </table>
+    <?php echo $users->render(); ?> <br>
+     <button onclick="window.location.href='<?php echo e(route('admin.create')); ?>'" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add User</button>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

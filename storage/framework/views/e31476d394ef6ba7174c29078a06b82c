@@ -1,0 +1,12 @@
+<?php $__env->startSection('main'); ?>
+    <legend>Nama Kategori : <?php echo $kategori->nama_kategori; ?></legend>
+
+    <?php echo Form::open(['method' => 'DELETE', 'route' => ['kategori.destroy', $kategori->id_kategori]]); ?>
+
+    <?php echo Form::submit('Delete', ['class' => 'btn btn-danger']); ?>
+
+    <?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

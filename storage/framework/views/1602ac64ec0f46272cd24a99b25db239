@@ -1,0 +1,47 @@
+<div class="form-group">
+    <?php /*<?php echo Form::label('nama_doc', 'Nama Dokumen :'); ?>*/ ?>
+    <?php echo Form::text('nama_doc', null, ['class' => 'form-control', 'placeholder' => 'Nama Dokumen']); ?>
+
+</div>
+
+<div class="form-group">
+    <?php /*<?php echo Form::label('id_doc', 'Nomor Dokumen :'); ?>*/ ?>
+    <?php echo Form::text('id_doc', null, ['class' => 'form-control', 'placeholder' => 'Nomor Dokumen']); ?>
+
+</div>
+
+<div class="form-group">
+    <?php /*<?php echo Form::label('id_kategori', 'Kategori :'); ?>*/ ?>
+    <?php echo Form::select('id_kategori', array('placeholder'=>'Silahkan Pilih Kategori')+App\Kategori::lists('nama_kategori','id_kategori'), null, array('id_kategori'=>'id_kategori', 'class' => 'form-control')); ?>
+
+</div>
+
+<div class="form-group">
+    <?php /*<?php echo Form::label('id_bidang', 'Bidang :'); ?>*/ ?>
+    <?php echo Form::select('id_bidang', array('placeholder'=>'Silahkan Pilih Bidang Operasional')+App\Bidang::lists('nama_bidang','id_bidang'), null, array('id_bidang'=>'id_bidang', 'class' => 'form-control')); ?>
+
+
+</div>
+
+<div class="form-group">
+    <?php /*<?php echo Form::label('start_date', 'Start :'); ?>*/ ?>
+    <?php echo Form::input('date', 'start_date', date('Y-m-d'), ['class' => 'form-control', 'placeholder' => 'Start']); ?>
+
+</div>
+
+<div class="form-group">
+    <?php /*<?php echo Form::label('untill_date', 'Ending :'); ?>*/ ?>
+    <?php echo Form::input('date', 'untill_date', date('Y-m-d'), ['class' => 'form-control', 'placeholder' => 'Ending']); ?>
+
+</div>
+
+<div class="form-group">
+    <?php /*<?php echo Form::label('remarks', 'Remarks :'); ?>*/ ?>
+    <?php echo Form::text('remarks', null, ['class' => 'form-control', 'placeholder' => 'Remarks']); ?>
+
+</div>
+
+<div class="form-group">
+    <?php echo Form::submit($submitButtonText, ['class' => 'btn btn-primary']); ?>
+
+</div>

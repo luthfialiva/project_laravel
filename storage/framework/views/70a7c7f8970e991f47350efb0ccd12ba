@@ -1,0 +1,17 @@
+<?php $__env->startSection('content'); ?>
+
+    <?php if(Auth::User()->role == 1): ?>
+        <?php echo $__env->make('admin.dashboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php elseif(Auth::User()->role == 2): ?>
+        Operator
+    <?php elseif(Auth::User()->role == 3): ?>
+        Kepsek
+    <?php elseif(Auth::User()->role == 4): ?>
+        Guru
+    <?php elseif(Auth::User()->role == 5): ?>
+        Siswa
+    <?php endif; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

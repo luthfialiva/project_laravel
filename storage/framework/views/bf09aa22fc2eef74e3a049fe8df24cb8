@@ -1,0 +1,17 @@
+<?php $__env->startSection('main'); ?>
+
+    <?php echo Form::model($user, ['route' => ['admin.update', $user->id], 'method' => 'PATCH']); ?>
+
+        <?php echo Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Username']); ?>
+
+        <?php echo Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name']); ?>
+
+        <?php echo Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email Address']); ?>
+
+        <?php echo Form::submit('Update User', ['class' => 'btn btn-primary']); ?>
+
+    <?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

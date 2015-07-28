@@ -1,0 +1,51 @@
+<?php $__env->startSection('main'); ?>
+    <legend>Daftar User</legend>
+    <a href="<?php echo e(route('admin.allDoc')); ?>">All Users
+        <span class="badge" style="margin-bottom: 10px"></span></a>
+    <table class="table table-striped table-bordered table-condensed">
+        <thead>
+        <tr>
+            <td rowspan="2"><div align="center"><strong>No</strong></div></td>
+            <td rowspan="2"><div align="center"><strong>Nama Dokumen</strong></div></td>
+            <td rowspan="2"><div align="center"><strong>Nomor Dokumen</strong></div></td>
+            <td rowspan="2"><div align="center"><strong>Bidang Operasi</strong></div></td>
+            <td rowspan="2"><div align="center"><strong>Kategori</strong></div></td>
+            <td colspan="2"><div align="center"><strong>Validasi</strong></div></td>
+            <td rowspan="2"><div align="center"><strong>Keterangan</strong></div></td>
+            <td rowspan="2"><div align="center"><strong>Action</strong></div></td>
+        </tr>
+        <tr>
+            <td><div align="center"><strong>Mulai</strong></div></td>
+            <td><div align="center"><strong>Selesai</strong></div></td>
+        </tr>
+        </thead>
+        <?php for($i=0; $i < count($docs); $i++): ?>
+            <?php /*<a href="/reminder/<?php echo e($doc->$id); ?>"></a>*/ ?>
+            <tbody>
+            <td><div align="center"><?php echo e($i+1); ?></div></td>
+            <td><div align="center"><?php echo e($docs[$i]->nama_doc); ?></div></td>
+            <td><div align="center"><?php echo e($docs[$i]->id_doc); ?></div></td>
+            <td><div align="center"><?php echo e($docs[$i]->nama_bidang); ?></div></td>
+            <td><div align="center"><?php echo e($docs[$i]->nama_kategori); ?></div></td>
+            <td><div align="center"><?php echo e($docs[$i]->start_date); ?></div></td>
+            <td><div align="center"><?php echo e($docs[$i]->untill_date); ?></div></td>
+            <td><div align="center"><?php echo e($docs[$i]->remarks); ?></div></td>
+            <td>
+                <div class="btn-group">
+                    <a class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" href="#">Actions <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo e(route('reminder.edit', ['id_doc' => $docs[$i]->id_doc])); ?>"><i class="glyphicon glyphicon-pencil"></i> Edit</a></li>
+                        <li><a href="<?php echo e(route('reminder.destroy', ['id_doc' => $docs[$i]->id_doc])); ?>"><i class="glyphicon glyphicon-trash"></i> Delete</a></li>
+                        <li><a href="<?php echo e(route('reminder.show', ['id_doc' => $docs[$i]->id_doc])); ?>"><i class="glyphicon glyphicon-search"></i> Details</a></li>
+                    </ul>
+                </div>
+            </td>
+            </tbody>
+
+        <?php endfor; ?>
+    </table>
+    <?php echo $docs->render(); ?> <br>
+    <button onclick="window.location.href='<?php echo e(route('reminder.create')); ?>'" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add User</button>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

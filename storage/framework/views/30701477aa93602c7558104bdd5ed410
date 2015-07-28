@@ -1,0 +1,8 @@
+<?php $no=0; ?>
+<?php foreach($feeds as $feed): ?>
+<?php $no=$no+1; ?>
+ <tr>
+      <td><?php echo $no ; ?></td>
+      <?php echo $__env->make("includes.activity.types.{$feed->name}", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>    
+</tr>
+<?php endforeach; ?>      

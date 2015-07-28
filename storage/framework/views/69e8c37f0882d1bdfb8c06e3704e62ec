@@ -1,0 +1,16 @@
+<script src="<?php echo e(asset('/js/reminder.js')); ?>"></script>
+<link href="<?php echo e(asset('/temp/css/reminder.css')); ?>" rel="stylesheet">
+
+<div id="gb">
+    <div class="gbtab" onclick="showHideGB()"> </div>
+    <div class="gbcontent">
+        <div style="text-align:right"></div><center>
+            <a href="javascript:showHideGB()" class="close-button" title="Close">X</a>
+
+            <div style="text-align:center; font-size: 20px; color: red;">* Periode Kategori Berakhir !!!</div>
+            <div style='overflow-y:scroll; width:655px;height:200px;padding:2px;scroll-color:hidden;'>
+                </div>
+            <div style="padding:5px"></div>
+
+    </div>
+</div>
